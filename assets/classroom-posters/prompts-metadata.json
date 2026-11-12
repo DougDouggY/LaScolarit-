@@ -1,0 +1,120 @@
+{
+  "mode": "built-in image_gen",
+  "grid": {
+    "columns": 4,
+    "rows": 4,
+    "gaps": 0
+  },
+  "atlases": [
+    {
+      "file": "atlas-a.png",
+      "columns": [
+        "Arts plastiques",
+        "Mathématiques",
+        "Français",
+        "Allemand"
+      ],
+      "rows": [
+        [
+          "Couleurs",
+          "Géométrie",
+          "Littérature",
+          "Berlin"
+        ],
+        [
+          "Nature morte",
+          "Pavages",
+          "Théâtre",
+          "Architecture allemande"
+        ],
+        [
+          "Outils de peinture",
+          "Symétrie",
+          "Écriture",
+          "Vocabulaire allemand"
+        ],
+        [
+          "Abstraction",
+          "Solides",
+          "Bibliothèque",
+          "Monuments allemands"
+        ]
+      ]
+    },
+    {
+      "file": "atlas-b.png",
+      "columns": [
+        "Anglais",
+        "Espagnol",
+        "Histoire-Géographie",
+        "Latin"
+      ],
+      "rows": [
+        [
+          "Westminster",
+          "Sagrada Família",
+          "Époques historiques",
+          "Forum romain"
+        ],
+        [
+          "Culture britannique",
+          "Culture espagnole",
+          "Château médiéval",
+          "Colonnes et arches"
+        ],
+        [
+          "Londres",
+          "Architecture espagnole",
+          "Temple grec",
+          "Colisée"
+        ],
+        [
+          "Littérature et thé",
+          "Vocabulaire espagnol",
+          "Exploration",
+          "Mosaïque romaine"
+        ]
+      ]
+    },
+    {
+      "file": "atlas-c.png",
+      "columns": [
+        "Musique",
+        "SVT",
+        "Technologie",
+        "Arts plastiques"
+      ],
+      "rows": [
+        [
+          "Orchestre",
+          "Botanique",
+          "Robotique",
+          "Paysage"
+        ],
+        [
+          "Instruments",
+          "Herbier",
+          "Électronique",
+          "Nature morte abstraite"
+        ],
+        [
+          "Notation musicale",
+          "Cellule",
+          "Outils mécaniques",
+          "Composition organique"
+        ],
+        [
+          "Piano",
+          "Cœur et poumons",
+          "Prototypes",
+          "Composition florale"
+        ]
+      ]
+    }
+  ],
+  "prompts": [
+    "Use case: scientific-educational. Asset: an atlas of 16 printable illustrated school subject posters for a French collège website. Create a high-resolution 2048x2048 minimum square image, exact 4 columns x 4 rows regular grid, every cell exactly equal size, square individual poster artwork. No gaps or gutters, no outer margins, no border between cells. Each COLUMN represents ONE subject; every column has FOUR different posters from top to bottom. Flat frontal printed artwork itself, never a photograph or classroom mockup. Colorful sophisticated educational print illustration, vivid gouache/screenprint-inspired style with detailed, recognizable subjects dominating each cell. Rich art suitable to view at 0.8m on a school wall. Minimum text; one short correct heading if helpful, no paragraphs. Avoid frames, shadows, perspective mounting, classrooms, watermarks. Nothing spans multiple cells.\nAtlas A. COLUMN 1 Arts plastiques: row1 a beautiful color wheel with paint swatches; row2 an expressive original colorful still-life artwork with fruit and vase; row3 assorted painter tools including brushes palette and paint tubes with layered shapes; row4 an original abstract composition exploring complementary color and collage.\nCOLUMN 2 Mathématiques: row1 elegant geometric constructions using ruler compass triangles and circles; row2 proportions and tessellated patterns, no formulas; row3 bilateral and rotational symmetry in colorful geometric patterns; row4 geometric solids with cube sphere cylinder cone and pyramid illustrated clearly.\nCOLUMN 3 Français: row1 literature with an open book, feather pen and imaginative story motifs; row2 theatre with stage curtains and comedy/tragedy masks; row3 writing with handwritten pages, fountain pen, ink and manuscript; row4 a rich library of varied books and warm reading motifs.\nCOLUMN 4 Allemand: row1 recognizable Brandenburg Gate and Berlin skyline; row2 German cultural architecture including a Bavarian half-timbered street; row3 illustrated simple vocabulary objects with short correct German words such as Buch, Haus, Apfel; row4 German landmarks with a romantic castle and Cologne cathedral.\nExactly 16 distinct square posters; exactly 4x4 grid.",
+    "Use case: scientific-educational. Asset: an atlas of 16 printable illustrated school subject posters for a French collège website. Create a high-resolution 2048x2048 minimum square image, exact 4 columns x 4 rows regular grid, every cell exactly equal size, square individual poster artwork. No gaps or gutters, no outer margins, no border between cells. Each COLUMN represents ONE subject; every column has FOUR different posters from top to bottom. Flat frontal printed artwork itself, never a photograph or classroom mockup. Colorful sophisticated educational print illustration, vivid gouache/screenprint-inspired style with detailed, recognizable subjects dominating each cell. Rich art suitable to view at 0.8m on a school wall. Minimum text; one short correct heading if helpful, no paragraphs. Avoid frames, shadows, perspective mounting, classrooms, watermarks. Nothing spans multiple cells.\nAtlas B. COLUMN 1 Anglais UK: row1 recognizable Elizabeth Tower and Houses of Parliament with London bus; row2 an accurately composed Union Jack and British culture objects; row3 London landmarks including Tower Bridge and a red telephone box; row4 British reading/tea culture with books, teapot, cup and countryside.\nCOLUMN 2 Espagnol: row1 recognizable Sagrada Família illustration; row2 Spanish cultural objects including acoustic guitar, fan, ceramic tiles and oranges; row3 a beautiful Spanish architectural plaza with arches and patterned azulejo tiles; row4 basic vocabulary objects with correct words libro, casa, sol.\nCOLUMN 3 Histoire-Géographie: row1 historical periods represented by distinct ancient/medieval/industrial objects, no dates required; row2 a historically plausible medieval castle; row3 ancient Greek temple with Doric columns; row4 age of exploration sailing ship, astrolabe and compass, NO MAPS.\nCOLUMN 4 Latin: row1 ancient Roman forum with classical columns; row2 architectural Roman columns capitals and arches; row3 recognizable Roman Colosseum amphitheatre; row4 beautiful Roman geometric mosaic with a classical motif.\nExactly 16 distinct square posters; exactly 4x4 grid. NO geographic maps anywhere.",
+    "Use case: scientific-educational. Asset: an atlas of 16 printable illustrated school subject posters for a French collège website. Create a high-resolution 2048x2048 minimum square image, exact 4 columns x 4 rows regular grid, every cell exactly equal size, square individual poster artwork. No gaps or gutters, no outer margins, no border between cells. Each COLUMN represents ONE subject; every column has FOUR different posters from top to bottom. Flat frontal printed artwork itself, never a photograph or classroom mockup. Colorful sophisticated educational print illustration, vivid gouache/screenprint-inspired style with detailed, recognizable subjects dominating each cell. Rich art suitable to view at 0.8m on a school wall. Minimum text; one short correct heading if helpful, no paragraphs. Avoid frames, shadows, perspective mounting, classrooms, watermarks. Nothing spans multiple cells.\nAtlas C. COLUMN 1 Musique: row1 a richly arranged orchestra with recognizable string wind brass and percussion instruments; row2 instrument families illustrated as violin flute trumpet drum; row3 expressive music notation with treble clef staff and musical notes, no instructional claim; row4 detailed grand piano and keyboard.\nCOLUMN 2 SVT: row1 detailed botanical illustration of plant leaves roots flower and seed; row2 herbarium showing different recognizable leaves and fern fronds; row3 stylized educational animal cell cross section with membrane nucleus and organelles, no labels needed; row4 clear stylized human heart and lungs on a pale background, no gore and no diagnostic claims.\nCOLUMN 3 Technologie: row1 educational robotics with a friendly articulated robot and gears; row2 electronics with recognizable circuit board resistors wires switch and bulb; row3 mechanical tools caliper screwdriver wrench gears; row4 industrial design prototypes with pencil sketches and a model mechanical object.\nCOLUMN 4 Arts plastiques additional: row1 original vivid landscape with layered hills and sun; row2 original abstract cubist-inspired still life; row3 original organic colorful cut-paper composition; row4 original bold floral decorative composition.\nExactly 16 distinct square posters; exactly 4x4 grid."
+  ]
+}

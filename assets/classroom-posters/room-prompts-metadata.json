@@ -1,0 +1,342 @@
+{
+  "generator": "built-in image_gen",
+  "created": "2026-10-07",
+  "requestedDimensions": [
+    2048,
+    2048
+  ],
+  "coordinateConvention": "zero-based rows and columns, left to right and top to bottom",
+  "grid": {
+    "columns": 4,
+    "rows": 4
+  },
+  "atlases": [
+    {
+      "key": "A",
+      "file": "rooms-a.png",
+      "prompt": "Use case: illustration-story. Asset type: texture atlas of French collège wall posters. Generate one square 2048x2048 image arranged as an EXACT 4-column by 4-row grid containing sixteen DISTINCT square illustrated print designs. Tiles abut edge-to-edge, no gutters or gaps. Each tile occupies exactly one quarter of width and height, with no elements crossing its edge. No photographic rooms, mockup perspective, picture frames, outer border, grid labels, tile numbers or captions outside posters. Each tile IS a flat standalone poster, boldly illustrated in cheerful contemporary French school editorial gouache and screen-print style, strong silhouette and vivid ink colors, subtle paper texture. Artwork should dominate; only the specified short French title appears inside each tile in large readable lettering. Use varied compositions and color schemes, distinct illustrations for every tile. Respect exact row/column placements below, counting left-to-right and top-to-bottom. Avoid dense copy and generic repeated icons.\nROW 1: COLUMN 1: School life office: three diverse pupils supporting a lonely classmate, friendship against bullying. Title \"ENSEMBLE\" | COLUMN 2: CPE: two students resolving a disagreement with a mediator, calm round table. Title \"DIALOGUER\" | COLUMN 3: Nurse: sleeping adolescent under moon and stars, peaceful quilt. Title \"BIEN DORMIR\" | COLUMN 4: Staff room: teachers sharing colorful ideas around a table. Title \"COOPÉRER\"\nROW 2: COLUMN 1: School life office: two friends high-fiving beneath bright rainbow. Title \"AMITIÉ\" | COLUMN 2: CPE: students lifting hands in courteous greeting, respect as warm gestures. Title \"RESPECT\" | COLUMN 3: Nurse: hands under water with soap bubbles, bold hygienic visual. Title \"MAINS PROPRES\" | COLUMN 4: Staff room: open books and steaming coffee cups on a lively desk. Title \"UNE PAUSE\"\nROW 3: COLUMN 1: School life office: eco delegates planting a leafy tree together. Title \"ÉCO-DÉLÉGUÉS\" | COLUMN 2: CPE: diverse inclusive students including wheelchair user, circle of welcome. Title \"TOUS BIENVENUS\" | COLUMN 3: Nurse: student drinking water with a large clear blue water bottle. Title \"BOIRE DE L’EAU\" | COLUMN 4: Staff room: school bus with teachers and students exploring landscape. Title \"SORTIES SCOLAIRES\"\nROW 4: COLUMN 1: School life office: lively student clubs with art, chess and theatre objects. Title \"LES CLUBS\" | COLUMN 2: CPE: supportive adult listening to a pupil, gentle speech bubbles. Title \"À L’ÉCOUTE\" | COLUMN 3: Nurse: teenagers jumping and stretching outdoors, energy and motion. Title \"BOUGER\" | COLUMN 4: Staff room: large collaborative class mural being painted by pupils. Title \"PROJETS DE CLASSE\"",
+      "tiles": [
+        {
+          "row": 0,
+          "column": 0,
+          "room": "school-life",
+          "description": "School life office: three diverse pupils supporting a lonely classmate, friendship against bullying. Title \"ENSEMBLE\""
+        },
+        {
+          "row": 0,
+          "column": 1,
+          "room": "cpe",
+          "description": "CPE: two students resolving a disagreement with a mediator, calm round table. Title \"DIALOGUER\""
+        },
+        {
+          "row": 0,
+          "column": 2,
+          "room": "nurse",
+          "description": "Nurse: sleeping adolescent under moon and stars, peaceful quilt. Title \"BIEN DORMIR\""
+        },
+        {
+          "row": 0,
+          "column": 3,
+          "room": "staff-room",
+          "description": "Staff room: teachers sharing colorful ideas around a table. Title \"COOPÉRER\""
+        },
+        {
+          "row": 1,
+          "column": 0,
+          "room": "school-life",
+          "description": "School life office: two friends high-fiving beneath bright rainbow. Title \"AMITIÉ\""
+        },
+        {
+          "row": 1,
+          "column": 1,
+          "room": "cpe",
+          "description": "CPE: students lifting hands in courteous greeting, respect as warm gestures. Title \"RESPECT\""
+        },
+        {
+          "row": 1,
+          "column": 2,
+          "room": "nurse",
+          "description": "Nurse: hands under water with soap bubbles, bold hygienic visual. Title \"MAINS PROPRES\""
+        },
+        {
+          "row": 1,
+          "column": 3,
+          "room": "staff-room",
+          "description": "Staff room: open books and steaming coffee cups on a lively desk. Title \"UNE PAUSE\""
+        },
+        {
+          "row": 2,
+          "column": 0,
+          "room": "school-life",
+          "description": "School life office: eco delegates planting a leafy tree together. Title \"ÉCO-DÉLÉGUÉS\""
+        },
+        {
+          "row": 2,
+          "column": 1,
+          "room": "cpe",
+          "description": "CPE: diverse inclusive students including wheelchair user, circle of welcome. Title \"TOUS BIENVENUS\""
+        },
+        {
+          "row": 2,
+          "column": 2,
+          "room": "nurse",
+          "description": "Nurse: student drinking water with a large clear blue water bottle. Title \"BOIRE DE L’EAU\""
+        },
+        {
+          "row": 2,
+          "column": 3,
+          "room": "staff-room",
+          "description": "Staff room: school bus with teachers and students exploring landscape. Title \"SORTIES SCOLAIRES\""
+        },
+        {
+          "row": 3,
+          "column": 0,
+          "room": "school-life",
+          "description": "School life office: lively student clubs with art, chess and theatre objects. Title \"LES CLUBS\""
+        },
+        {
+          "row": 3,
+          "column": 1,
+          "room": "cpe",
+          "description": "CPE: supportive adult listening to a pupil, gentle speech bubbles. Title \"À L’ÉCOUTE\""
+        },
+        {
+          "row": 3,
+          "column": 2,
+          "room": "nurse",
+          "description": "Nurse: teenagers jumping and stretching outdoors, energy and motion. Title \"BOUGER\""
+        },
+        {
+          "row": 3,
+          "column": 3,
+          "room": "staff-room",
+          "description": "Staff room: large collaborative class mural being painted by pupils. Title \"PROJETS DE CLASSE\""
+        }
+      ],
+      "actualDimensions": [
+        1254,
+        1254
+      ],
+      "format": "PNG",
+      "path": "/workspace/scratch/409d78191e36/room-poster-assets/rooms-a.png"
+    },
+    {
+      "key": "B",
+      "file": "rooms-b.png",
+      "prompt": "Use case: illustration-story. Asset type: texture atlas of French collège wall posters. Generate one square 2048x2048 image arranged as an EXACT 4-column by 4-row grid containing sixteen DISTINCT square illustrated print designs. Tiles abut edge-to-edge, no gutters or gaps. Each tile occupies exactly one quarter of width and height, with no elements crossing its edge. No photographic rooms, mockup perspective, picture frames, outer border, grid labels, tile numbers or captions outside posters. Each tile IS a flat standalone poster, boldly illustrated in cheerful contemporary French school editorial gouache and screen-print style, strong silhouette and vivid ink colors, subtle paper texture. Artwork should dominate; only the specified short French title appears inside each tile in large readable lettering. Use varied compositions and color schemes, distinct illustrations for every tile. Respect exact row/column placements below, counting left-to-right and top-to-bottom. Avoid dense copy and generic repeated icons.\nROW 1: COLUMN 1: Director: students building a visionary model of a sustainable school. Title \"NOS PROJETS\" | COLUMN 2: Secretary: smiling families welcomed through bright school doorway. Title \"BIENVENUE\" | COLUMN 3: CDI: reader sailing in a magical open-book boat across ocean. Title \"LIRE, C’EST VOYAGER\" | COLUMN 4: Study room: focused pupil working under desk lamp, hushed calm. Title \"AU CALME\"\nROW 2: COLUMN 1: Director: theatrical masks and museum sculptures with student visitors. Title \"CULTURE\" | COLUMN 2: Secretary: large cheerful calendar with stars and colored days. Title \"LE CALENDRIER\" | COLUMN 3: CDI: graphic novel heroes in vibrant comic panels, no extra speech text. Title \"BANDES DESSINÉES\" | COLUMN 4: Study room: tidy weekly planner with clock and organized stationery. Title \"S’ORGANISER\"\nROW 3: COLUMN 1: Director: young scientists examining planets and microscope. Title \"SCIENCES\" | COLUMN 2: Secretary: neatly arranged folders, envelopes and welcoming administrative desk. Title \"LES DÉMARCHES\" | COLUMN 3: CDI: teenager exploring towering fantastical library shelves. Title \"EXPLORER LES LIVRES\" | COLUMN 4: Study room: student revising with colorful flashcards and a notebook. Title \"RÉVISER\"\nROW 4: COLUMN 1: Director: school sports with basketball and running track, teamwork. Title \"SPORT\" | COLUMN 2: Secretary: colorful backpack overflowing with pencils rulers and notebooks. Title \"BIEN ÉQUIPÉS\" | COLUMN 3: CDI: poetry flowing as birds and flowers out of a fountain pen. Title \"POÉSIE\" | COLUMN 4: Study room: creative student drawing imaginative stars and inventions. Title \"IMAGINER\"",
+      "tiles": [
+        {
+          "row": 0,
+          "column": 0,
+          "room": "director",
+          "description": "Director: students building a visionary model of a sustainable school. Title \"NOS PROJETS\""
+        },
+        {
+          "row": 0,
+          "column": 1,
+          "room": "secretary",
+          "description": "Secretary: smiling families welcomed through bright school doorway. Title \"BIENVENUE\""
+        },
+        {
+          "row": 0,
+          "column": 2,
+          "room": "cdi",
+          "description": "CDI: reader sailing in a magical open-book boat across ocean. Title \"LIRE, C’EST VOYAGER\""
+        },
+        {
+          "row": 0,
+          "column": 3,
+          "room": "study",
+          "description": "Study room: focused pupil working under desk lamp, hushed calm. Title \"AU CALME\""
+        },
+        {
+          "row": 1,
+          "column": 0,
+          "room": "director",
+          "description": "Director: theatrical masks and museum sculptures with student visitors. Title \"CULTURE\""
+        },
+        {
+          "row": 1,
+          "column": 1,
+          "room": "secretary",
+          "description": "Secretary: large cheerful calendar with stars and colored days. Title \"LE CALENDRIER\""
+        },
+        {
+          "row": 1,
+          "column": 2,
+          "room": "cdi",
+          "description": "CDI: graphic novel heroes in vibrant comic panels, no extra speech text. Title \"BANDES DESSINÉES\""
+        },
+        {
+          "row": 1,
+          "column": 3,
+          "room": "study",
+          "description": "Study room: tidy weekly planner with clock and organized stationery. Title \"S’ORGANISER\""
+        },
+        {
+          "row": 2,
+          "column": 0,
+          "room": "director",
+          "description": "Director: young scientists examining planets and microscope. Title \"SCIENCES\""
+        },
+        {
+          "row": 2,
+          "column": 1,
+          "room": "secretary",
+          "description": "Secretary: neatly arranged folders, envelopes and welcoming administrative desk. Title \"LES DÉMARCHES\""
+        },
+        {
+          "row": 2,
+          "column": 2,
+          "room": "cdi",
+          "description": "CDI: teenager exploring towering fantastical library shelves. Title \"EXPLORER LES LIVRES\""
+        },
+        {
+          "row": 2,
+          "column": 3,
+          "room": "study",
+          "description": "Study room: student revising with colorful flashcards and a notebook. Title \"RÉVISER\""
+        },
+        {
+          "row": 3,
+          "column": 0,
+          "room": "director",
+          "description": "Director: school sports with basketball and running track, teamwork. Title \"SPORT\""
+        },
+        {
+          "row": 3,
+          "column": 1,
+          "room": "secretary",
+          "description": "Secretary: colorful backpack overflowing with pencils rulers and notebooks. Title \"BIEN ÉQUIPÉS\""
+        },
+        {
+          "row": 3,
+          "column": 2,
+          "room": "cdi",
+          "description": "CDI: poetry flowing as birds and flowers out of a fountain pen. Title \"POÉSIE\""
+        },
+        {
+          "row": 3,
+          "column": 3,
+          "room": "study",
+          "description": "Study room: creative student drawing imaginative stars and inventions. Title \"IMAGINER\""
+        }
+      ],
+      "actualDimensions": [
+        1254,
+        1254
+      ],
+      "format": "PNG",
+      "path": "/workspace/scratch/409d78191e36/room-poster-assets/rooms-b.png"
+    },
+    {
+      "key": "C",
+      "file": "rooms-c.png",
+      "prompt": "Use case: illustration-story. Asset type: texture atlas of French collège wall posters. Generate one square 2048x2048 image arranged as an EXACT 4-column by 4-row grid containing sixteen DISTINCT square illustrated print designs. Tiles abut edge-to-edge, no gutters or gaps. Each tile occupies exactly one quarter of width and height, with no elements crossing its edge. No photographic rooms, mockup perspective, picture frames, outer border, grid labels, tile numbers or captions outside posters. Each tile IS a flat standalone poster, boldly illustrated in cheerful contemporary French school editorial gouache and screen-print style, strong silhouette and vivid ink colors, subtle paper texture. Artwork should dominate; only the specified short French title appears inside each tile in large readable lettering. Use varied compositions and color schemes, distinct illustrations for every tile. Respect exact row/column placements below, counting left-to-right and top-to-bottom. Avoid dense copy and generic repeated icons.\nROW 1: COLUMN 1: Girls toilets: illustrated palms washing with foamy soap, coral background and floral shapes. Title \"LAVE TES MAINS\" | COLUMN 2: Boys toilets: hygienic hands holding a bar of soap, navy and turquoise geometric splash, distinctly different from left tile. Title \"LE SAVON, C’EST BIEN\" | COLUMN 3: Canteen: healthy colorful balanced food plate viewed from above. Title \"BIEN MANGER\" | COLUMN 4: Hall: diverse student clubs making art and a chess game, lively group. Title \"DES TALENTS\"\nROW 2: COLUMN 1: Girls toilets: precious single water drop with flower and closed tap, save water. Title \"ÉCONOMISE L’EAU\" | COLUMN 2: Boys toilets: brass water tap turned off by a hand with crisp blue graphic arrows, unique composition. Title \"FERME LE ROBINET\" | COLUMN 3: Canteen: seasonal garden vegetables and fruit overflowing wicker basket. Title \"DE SAISON\" | COLUMN 4: Hall: active sports and arts club students dancing, playing ball and painting. Title \"À TOI DE JOUER\"\nROW 3: COLUMN 1: Girls toilets: sparkling immaculate sink and towel with cleaning starbursts. Title \"UN LIEU PROPRE\" | COLUMN 2: Boys toilets: cartoon pupils preserving clean shared washroom with tidy floor and waste bin, no frame or room mockup. Title \"RESPECTE LES LIEUX\" | COLUMN 3: Canteen: student choosing an appropriate small serving with leftover-saving lunch box. Title \"ZÉRO GASPILLAGE\" | COLUMN 4: Hall: student playing cello beside student reading a book, musical flowing notes. Title \"MUSIQUE ET LECTURE\"\nROW 4: COLUMN 1: Girls toilets: illustrated paper cardboard and bottle arranged at recycling containers, pastel graphic. Title \"JE TRIE\" | COLUMN 2: Boys toilets: colorful sorting bins with distinctly composed cans paper and packaging falling into matching bins. Title \"LE BON GESTE\" | COLUMN 3: Canteen: diverse smiling friends sharing a warm school meal. Title \"À TABLE ENSEMBLE\" | COLUMN 4: Hall: students tending raised school garden with pollinator butterflies. Title \"LE JARDIN DU COLLÈGE\"",
+      "tiles": [
+        {
+          "row": 0,
+          "column": 0,
+          "room": "girls-toilets",
+          "description": "Girls toilets: illustrated palms washing with foamy soap, coral background and floral shapes. Title \"LAVE TES MAINS\""
+        },
+        {
+          "row": 0,
+          "column": 1,
+          "room": "boys-toilets",
+          "description": "Boys toilets: hygienic hands holding a bar of soap, navy and turquoise geometric splash, distinctly different from left tile. Title \"LE SAVON, C’EST BIEN\""
+        },
+        {
+          "row": 0,
+          "column": 2,
+          "room": "canteen",
+          "description": "Canteen: healthy colorful balanced food plate viewed from above. Title \"BIEN MANGER\""
+        },
+        {
+          "row": 0,
+          "column": 3,
+          "room": "halls",
+          "description": "Hall: diverse student clubs making art and a chess game, lively group. Title \"DES TALENTS\""
+        },
+        {
+          "row": 1,
+          "column": 0,
+          "room": "girls-toilets",
+          "description": "Girls toilets: precious single water drop with flower and closed tap, save water. Title \"ÉCONOMISE L’EAU\""
+        },
+        {
+          "row": 1,
+          "column": 1,
+          "room": "boys-toilets",
+          "description": "Boys toilets: brass water tap turned off by a hand with crisp blue graphic arrows, unique composition. Title \"FERME LE ROBINET\""
+        },
+        {
+          "row": 1,
+          "column": 2,
+          "room": "canteen",
+          "description": "Canteen: seasonal garden vegetables and fruit overflowing wicker basket. Title \"DE SAISON\""
+        },
+        {
+          "row": 1,
+          "column": 3,
+          "room": "halls",
+          "description": "Hall: active sports and arts club students dancing, playing ball and painting. Title \"À TOI DE JOUER\""
+        },
+        {
+          "row": 2,
+          "column": 0,
+          "room": "girls-toilets",
+          "description": "Girls toilets: sparkling immaculate sink and towel with cleaning starbursts. Title \"UN LIEU PROPRE\""
+        },
+        {
+          "row": 2,
+          "column": 1,
+          "room": "boys-toilets",
+          "description": "Boys toilets: cartoon pupils preserving clean shared washroom with tidy floor and waste bin, no frame or room mockup. Title \"RESPECTE LES LIEUX\""
+        },
+        {
+          "row": 2,
+          "column": 2,
+          "room": "canteen",
+          "description": "Canteen: student choosing an appropriate small serving with leftover-saving lunch box. Title \"ZÉRO GASPILLAGE\""
+        },
+        {
+          "row": 2,
+          "column": 3,
+          "room": "halls",
+          "description": "Hall: student playing cello beside student reading a book, musical flowing notes. Title \"MUSIQUE ET LECTURE\""
+        },
+        {
+          "row": 3,
+          "column": 0,
+          "room": "girls-toilets",
+          "description": "Girls toilets: illustrated paper cardboard and bottle arranged at recycling containers, pastel graphic. Title \"JE TRIE\""
+        },
+        {
+          "row": 3,
+          "column": 1,
+          "room": "boys-toilets",
+          "description": "Boys toilets: colorful sorting bins with distinctly composed cans paper and packaging falling into matching bins. Title \"LE BON GESTE\""
+        },
+        {
+          "row": 3,
+          "column": 2,
+          "room": "canteen",
+          "description": "Canteen: diverse smiling friends sharing a warm school meal. Title \"À TABLE ENSEMBLE\""
+        },
+        {
+          "row": 3,
+          "column": 3,
+          "room": "halls",
+          "description": "Hall: students tending raised school garden with pollinator butterflies. Title \"LE JARDIN DU COLLÈGE\""
+        }
+      ],
+      "actualDimensions": [
+        1254,
+        1254
+      ],
+      "format": "PNG",
+      "path": "/workspace/scratch/409d78191e36/room-poster-assets/rooms-c.png"
+    }
+  ]
+}

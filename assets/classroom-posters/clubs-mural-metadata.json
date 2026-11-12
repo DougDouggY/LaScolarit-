@@ -1,0 +1,131 @@
+{
+  "mode": "built-in image_gen",
+  "originalsUnchanged": true,
+  "assets": [
+    {
+      "filename": "clubs.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: ads-marketing. Asset type: French collège hallway recruitment poster texture atlas. Create a square 2048x2048 image containing EXACTLY a 4 by 4 grid, 16 different illustrated club posters, every cell exactly one quarter image width and height. Edge-to-edge atlas, no margins, no gaps, no frames, no room view, no perspective. All sixteen posters DISTINCT with their own vibrant drawn print design and illustrated objects appropriate to students ages 11-15. Realistic printed poster graphic art, attractive limited ink palettes, rich hand-drawn shapes, paper texture. Each poster title large clearly legible accurate French; no other text, no times or contact information.\nStrict row-major mapping:\nTop row, left to right: \"CLUB JOURNAL\" newspaper reporting with notebook and student press; \"JEUX DE SOCIÉTÉ\" board-game pawns dice and game board; \"CLUB HANDBALL\" dynamic handball ball goal and athlete; \"ATELIER THÉÂTRE\" stage curtain and dramatic masks.\nSecond row: \"CLUB ÉCHECS\" chess pieces and board; \"CLUB PHOTO\" camera and photographs; \"CLUB MUSIQUE\" musical instruments and notes; \"ÉCO-CLUB\" environmental leaves recycling nature.\nThird row: \"ATELIER BD\" comic drawing pens and panels; \"CLUB SCIENCES\" chemistry astronomy and laboratory symbols; \"CLUB LECTURE\" books and reader; \"CLUB CINÉMA\" film reel clapperboard cinema.\nBottom row: \"CLUB ROBOTIQUE\" friendly engineering robot circuitry tools; \"CLUB CHORALE\" singing voices and music score; \"CLUB DESSIN\" drawing pencils colorful sketchbook; \"CLUB JARDIN\" seedlings garden plants watering can.\nEach cell must contain its designated theme and exact title only. Entire grid fills whole image, perfectly regular cell boundaries. No duplicate titles, no extra cells, no white gutters. Flat artwork suitable for extracting separate wall posters.",
+      "mapping": [
+        {
+          "index": 0,
+          "row": 0,
+          "column": 0,
+          "title": "CLUB JOURNAL"
+        },
+        {
+          "index": 1,
+          "row": 0,
+          "column": 1,
+          "title": "JEUX DE SOCIÉTÉ"
+        },
+        {
+          "index": 2,
+          "row": 0,
+          "column": 2,
+          "title": "CLUB HANDBALL"
+        },
+        {
+          "index": 3,
+          "row": 0,
+          "column": 3,
+          "title": "ATELIER THÉÂTRE"
+        },
+        {
+          "index": 4,
+          "row": 1,
+          "column": 0,
+          "title": "CLUB ÉCHECS"
+        },
+        {
+          "index": 5,
+          "row": 1,
+          "column": 1,
+          "title": "CLUB PHOTO"
+        },
+        {
+          "index": 6,
+          "row": 1,
+          "column": 2,
+          "title": "CLUB MUSIQUE"
+        },
+        {
+          "index": 7,
+          "row": 1,
+          "column": 3,
+          "title": "ÉCO-CLUB"
+        },
+        {
+          "index": 8,
+          "row": 2,
+          "column": 0,
+          "title": "ATELIER BD"
+        },
+        {
+          "index": 9,
+          "row": 2,
+          "column": 1,
+          "title": "CLUB SCIENCES"
+        },
+        {
+          "index": 10,
+          "row": 2,
+          "column": 2,
+          "title": "CLUB LECTURE"
+        },
+        {
+          "index": 11,
+          "row": 2,
+          "column": 3,
+          "title": "CLUB CINÉMA"
+        },
+        {
+          "index": 12,
+          "row": 3,
+          "column": 0,
+          "title": "CLUB ROBOTIQUE"
+        },
+        {
+          "index": 13,
+          "row": 3,
+          "column": 1,
+          "title": "CLUB CHORALE"
+        },
+        {
+          "index": 14,
+          "row": 3,
+          "column": 2,
+          "title": "CLUB DESSIN"
+        },
+        {
+          "index": 15,
+          "row": 3,
+          "column": 3,
+          "title": "CLUB JARDIN"
+        }
+      ],
+      "inspection": "Exact 4x4 grid; all 16 titles and distinct themes present in requested row-major order; edge-to-edge, no gaps. Image width not divisible by 4: use normalized UV quarters rather than fixed integer cell widths."
+    },
+    {
+      "filename": "nurse-consent.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "prompt": "Use case: scientific-educational. Asset type: portrait French collège health education wall poster for ages 11-15. Create one polished illustrated French public-health poster, portrait 1024x1536. Clear title at top \"CONSENTEMENT\"; three further accurate short labels only: \"RESPECT\", \"PROTECTION\", \"EN PARLER\". These are the only words in the image, spelled exactly. Thoughtful contemporary illustrated print aesthetic, supportive inclusive tone. Clothed teen silhouettes with respectful physical space, gentle speech bubbles, hands and heart motifs. Spacious strong hierarchy, uplifting warm and cool colors, subtle paper texture, flat front-on poster fills the image. Nonsexual health education, no nudity, no sex acts, no condoms close-up, no explicit detail. No brands, no invented medical advice or slogans.",
+      "inspection": "Four exact labels present. Clothed inclusive teens, supportive respectful gestures and conversation. No explicit content."
+    },
+    {
+      "filename": "mural.png",
+      "dimensions": [
+        2172,
+        724
+      ],
+      "prompt": "Use case: illustration-story. Asset type: texture for original painted French collège exterior fresco. Wide approximate 3:1 composition, ideally 2304x768. Front-on complete painted mural fills entire image edge to edge on neutral pale smooth plaster. Sophisticated colorful collective wall artwork by adolescent students, expressive actual hand-painted brush texture. Cohesively interweave science and solar system planets, handball sport ball and goal motifs, music instruments and notes, books, nature plants trees birds and a local French town roofline. Rich harmonious composition with confident painted shapes, realistic pigment and brush irregularities on smooth plaster. No written text or letters, no frame, no room or furniture, no people standing in front. Not a 3D scene, not Roblox, not cartoon toy characters. Entire image is the original fresco flat from directly in front.",
+      "inspection": "3:1 flat front-on painted fresco. Science, handball, music, books, nature, town motifs present. No text, frame, or people in front."
+    }
+  ]
+}

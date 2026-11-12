@@ -1,0 +1,16 @@
+{
+  "artwork": "48 original illustrated decorative posters generated for the school project with the built-in image generator. Prompts and atlas mapping: prompts-metadata.json.",
+  "geography": {
+    "dataset": "Natural Earth, 1:110m land polygons",
+    "license": "Public domain",
+    "source": "https://www.naturalearthdata.com/downloads/110m-physical-vectors/110m-land/",
+    "terms": "https://www.naturalearthdata.com/about/terms-of-use/"
+  },
+  "classroom_references": [
+    "https://batiscolaire.education.gouv.fr/fiche-espace-salles-d-arts-plastiques-arts-appliques-et-culture-artistique-240393",
+    "https://batiscolaire.education.gouv.fr/fiche-pratique-repartir-les-lieux-de-lecture-240623",
+    "https://batiscolaire.education.gouv.fr/fiche-espace-salles-d-education-musicale-240392",
+    "https://batiscolaire.education.gouv.fr/fiche-espace-salles-scientifiques-et-technologiques-240391",
+    "https://www.education.gouv.fr/media/228385/download"
+  ]
+}
