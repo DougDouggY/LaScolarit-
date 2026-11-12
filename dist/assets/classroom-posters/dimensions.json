@@ -1,0 +1,46 @@
+{
+  "earth-natural-earth.png": {
+    "width": 2048,
+    "height": 1024
+  },
+  "atlas-c.jpg": {
+    "width": 1254,
+    "height": 1254
+  },
+  "world-map-natural-earth.png": {
+    "width": 2048,
+    "height": 1280
+  },
+  "atlas-b.jpg": {
+    "width": 1254,
+    "height": 1254
+  },
+  "atlas-a.jpg": {
+    "width": 1254,
+    "height": 1254
+  },
+  "rooms-a.jpg": {
+    "width": 1254,
+    "height": 1254
+  },
+  "rooms-b.jpg": {
+    "width": 1254,
+    "height": 1254
+  },
+  "rooms-c.jpg": {
+    "width": 1254,
+    "height": 1254
+  },
+  "clubs.jpg": {
+    "width": 1254,
+    "height": 1254
+  },
+  "nurse-consent.jpg": {
+    "width": 1024,
+    "height": 1536
+  },
+  "mural.jpg": {
+    "width": 2172,
+    "height": 724
+  }
+}

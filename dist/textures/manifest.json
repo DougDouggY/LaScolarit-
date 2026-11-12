@@ -1,0 +1,37 @@
+{
+  "generator": "built-in image_gen.imagegen",
+  "generationsPerAsset": 1,
+  "retries": 0,
+  "mode": "generate",
+  "transparent_background": false,
+  "inspection": "Visually inspected all original generated PNGs. Clean edge-to-edge flat textures with no joints, text, borders or obvious lighting gradients. Seamless tiling was requested; exact seam continuity is not guaranteed by generation.",
+  "assets": [
+    {
+      "name": "limestone-greige",
+      "path": "textures/limestone.png",
+      "width": 1254,
+      "height": 1254,
+      "format": "PNG",
+      "color": "RGB 8-bit",
+      "prompt": "Use case: photorealistic-natural\nAsset type: seamless PBR base-color texture for a school architectural game.\nStyle/medium: photorealistic material surface scan, flat albedo only.\nComposition/framing: one square image at least 1024 by 1024 pixels, orthographic straight-on view of only the material; fills the entire image edge to edge. Seamless tile: opposite edges must connect naturally in both axes.\nLighting/mood: perfectly uniform diffuse illumination across the whole image. No directional lighting, no gradients, no cast shadows, no highlights or baked specular reflections.\nConstraints: no objects or scenery, no perspective, no text, no logos, no border, no joints, no vignette.\nPrimary request: smooth neutral light greige limestone for a contemporary school exterior.\nMaterials/textures: honed smooth face with very subtle fine mineral grain and tiny natural tonal flecks. Pale warm grey beige, restrained low contrast, clean even surface.\nAvoid: stone blocks, masonry joints, cracks, damage, dirt, grime, rust, strongly mottled clouds."
+    },
+    {
+      "name": "oak-veneer",
+      "path": "textures/oak.png",
+      "width": 1254,
+      "height": 1254,
+      "format": "PNG",
+      "color": "RGB 8-bit",
+      "prompt": "Use case: photorealistic-natural\nAsset type: seamless PBR base-color texture for a school architectural game.\nStyle/medium: photorealistic material surface scan, flat albedo only.\nComposition/framing: one square image at least 1024 by 1024 pixels, orthographic straight-on view of only the material; fills the entire image edge to edge. Seamless tile: opposite edges must connect naturally in both axes.\nLighting/mood: perfectly uniform diffuse illumination across the whole image. No directional lighting, no gradients, no cast shadows, no highlights or baked specular reflections.\nConstraints: no objects or scenery, no perspective, no text, no logos, no border, no joints, no vignette.\nPrimary request: light-to-medium natural oak veneer for school doors and cabinets.\nMaterials/textures: fine straight vertical wood grain from top to bottom, subtle varied natural fibers, restrained honey tan and warm beige browns, smooth satin varnished finish represented as base color without reflections.\nAvoid: knots, dramatic cathedral grain, planks, board seams, joints, damage, dirt, horizontal grain."
+    },
+    {
+      "name": "concrete-terrazzo-grey",
+      "path": "textures/stair-concrete.png",
+      "width": 1254,
+      "height": 1254,
+      "format": "PNG",
+      "color": "RGB 8-bit",
+      "prompt": "Use case: photorealistic-natural\nAsset type: seamless PBR base-color texture for a school architectural game.\nStyle/medium: photorealistic material surface scan, flat albedo only.\nComposition/framing: one square image at least 1024 by 1024 pixels, orthographic straight-on view of only the material; fills the entire image edge to edge. Seamless tile: opposite edges must connect naturally in both axes.\nLighting/mood: perfectly uniform diffuse illumination across the whole image. No directional lighting, no gradients, no cast shadows, no highlights or baked specular reflections.\nConstraints: no objects or scenery, no perspective, no text, no logos, no border, no joints, no vignette.\nPrimary request: fine grey concrete terrazzo stair surface.\nMaterials/textures: clean neutral grey cement with compact tiny mineral aggregate, evenly distributed very small muted light-grey and charcoal flecks. Fine low-contrast texture, matte to slightly honed surface, contemporary school stairs.\nAvoid: large chunky stone chips, terrazzo tiles, tile joints, seams, cracks, stains, dirt, glossy reflections."
+    }
+  ]
+}
