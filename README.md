@@ -2,6 +2,10 @@
 
 Jeu statique : les fichiers jouables se trouvent dans `dist`.
 
+L’accueil ouvre directement la visite libre du collège (`campus-view.html`).
+Les anciens modes 2D, campagne et monde test utilisant l’ancienne carte ont été supprimés.
+La journée avec IA (`campus-journee.html`) utilise la même carte actuelle que la visite libre.
+
 ## Développement collaboratif
 
 `main` est la source principale. Chaque personne travaille dans sa propre branche,

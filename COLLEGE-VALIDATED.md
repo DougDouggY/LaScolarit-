@@ -8,7 +8,7 @@ Current stage: first classroom furnishings are authorized. Eleven teaching rooms
 
 Interior identity update: subject-specific painted lower bands and one accent wall per room; public circulation uses petrol blue, ivory and a narrow ochre stripe, all clipped around the approved openings. Fifty numbered metal lockers in five banks have ventilation, handles, hinges and a mix of padlocks. Lockers are static during this inspection stage; no search interaction or loot has been added. Room geometry remains frozen.
 
-Keep the clock stopped, no moving NPCs and the gate open during this inspection phase. Preserve the existing campaign and test-room menu entries.
+Keep the clock stopped, no moving NPCs and the gate open during this inspection phase. The legacy campaign, 2D game and test-room modes have been removed at the user’s request. The home page opens the current college’s free visit; retain its approved geometry.
 
 Latest correction overrides the earlier library treatment: bookshelves/books below both staircases are removed, replaced by closed oak storage doors. Both cheeks and the front returning-flight wall now run fully down to the ground; the central divider and all three sides of the intermediate landing are visibly enclosed. Public wall paint now comes from every structural face bordering circulation, including technology/history's north wall. Room finishes use all structural openings, fixing the paint skin that covered the existing stair-A passage in both vestibules. The approved plan file stays unchanged. Verification starts staircase A walks inside the entry/arrival vestibule, verifies the opening has no paint below the lintel, and checks complete finish coverage across the technology/history wall.
 
