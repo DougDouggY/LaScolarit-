@@ -5,6 +5,7 @@ window.startCampusPupil=function(D){
  const nav=makeCampusNavigator(D),home={x:1100,y:220,level:0};
  const actor={x:home.x,y:home.y,h:0,path:[],heading:0,phase:0,blend:0,speed:1.25};
  let model=null,mixer=null,currentAction=null,currentClip='',actions={},naturalSpeeds={},mode='stop',paused=false,followTimer=0,roamWait=0,ready=false,failed=false,lastFocus=null;
+ const initialView={position:D.camera.position.clone(),quaternion:D.camera.quaternion.clone()};
  const root=new T.Group();root.name='Élève GLB · test';D.scene.add(root);
  const panel=document.querySelector('#pupilPanel'),status=document.querySelector('#pupilStatus'),badge=document.querySelector('#pupilBadge');
  const buttons=[...panel.querySelectorAll('[data-pupil]')];
@@ -100,6 +101,7 @@ window.startCampusPupil=function(D){
    actions[clip.name]=mixer.clipAction(clip);
   }
   root.add(model);play('idle');mixer.update(0);ready=true;setReady(true);say('Élève articulé prêt · H pour choisir une action');
+  if(D.camera.position.distanceToSquared(initialView.position)<.001&&Math.abs(D.camera.quaternion.dot(initialView.quaternion))>.9999)D.facePoint(X(actor.x),actor.h+1.05,Z(actor.y));
  },undefined,error=>{failed=true;console.error('Chargement du personnage GLB',error);say('Échec du chargement. Recharge la page pour réessayer.');});
  function tick(dt){
   if(!ready)return;dt=Math.min(dt,.04);let traveled=0;
