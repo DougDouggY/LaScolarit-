@@ -54,10 +54,12 @@ nécessaire. Respecter les contraintes de plan décrites dans `COLLEGE-VALIDATED
 
 ## Élève GLB de test
 
+L’élève est un PNJ indépendant, visible et en promenade dès le chargement de la cour.
+Le joueur reste en première personne ; les ordres ne déplacent jamais sa caméra.
 Dans la visite libre, appuyer sur **H** ou sur **Élève · H** pour ouvrir le menu.
 Actions : marcher jusqu’en français, courir au portail, se promener dans la cour,
 suivre le joueur au rez-de-chaussée, s’arrêter et revenir au départ. Le menu
-permet aussi de voir le modèle de près, de suspendre le test et de régler sa vitesse.
+permet aussi de regarder vers le modèle, de suspendre le test et de régler sa vitesse.
 Les déplacements utilisent les obstacles du collège et ouvrent les portes.
 
 Le deuxième modèle fourni remplace le premier dans `dist/assets/characters/eleve.glb`.

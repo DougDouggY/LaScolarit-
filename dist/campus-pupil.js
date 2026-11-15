@@ -46,16 +46,14 @@ window.startCampusPupil=function(D){
   mode='stop';say('À l’arrêt');return true;
  }
  function focusActor(){
-  const offsets=[[0,3.2],[3.2,0],[-3.2,0],[0,-3.2]];
-  for(const [dx,dz]of offsets){const x=X(actor.x)+dx,z=Z(actor.y)+dz;if(D.canMove(x,z,actor.h)){
-   D.teleport(x/P.scale+715,z/P.scale+360,0);D.facePoint(X(actor.x),actor.h+1.1,Z(actor.y));return true;
-  }}say('Approche-toi de l’élève pour mieux le voir.');return false;
+  // Remote control never moves or replaces the first-person player.
+  D.facePoint(X(actor.x),actor.h+1.1,Z(actor.y));return true;
  }
  buttons.forEach(b=>b.onclick=()=>{
   const action=b.dataset.pupil;
   if(action==='focus'){focusActor();open(false);return;}
   if(action==='pause'){paused=!paused;b.setAttribute('aria-pressed',String(paused));say(paused?'Animation et déplacement en pause':'Reprise du test');return;}
-  if(action==='reset'){Object.assign(actor,{...home,h:0,path:[],phase:0,blend:0,heading:0});command('stop');focusActor();return;}
+  if(action==='reset'){Object.assign(actor,{...home,h:0,path:[],phase:0,blend:0,heading:0});command('roam');return;}
   command(action);
  });
  document.querySelector('#pupilSpeed').oninput=e=>{document.querySelector('#pupilSpeedValue').textContent=e.target.value+'×';};
@@ -100,7 +98,11 @@ window.startCampusPupil=function(D){
    }
    actions[clip.name]=mixer.clipAction(clip);
   }
-  root.add(model);play('idle');mixer.update(0);ready=true;setReady(true);say('Élève articulé prêt · H pour choisir une action');
+  root.add(model);play('idle');mixer.update(0);
+  const canvas=document.createElement('canvas');canvas.width=512;canvas.height=96;
+  const ctx=canvas.getContext('2d');ctx.fillStyle='#152329';ctx.fillRect(0,0,512,96);ctx.fillStyle='#f1e7ca';ctx.font='bold 32px system-ui';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('ÉLÈVE · CONTRÔLE H',256,48);
+  const label=new T.Sprite(new T.SpriteMaterial({map:new T.CanvasTexture(canvas),depthWrite:false}));label.position.y=1.94;label.scale.set(1.9,.36,1);label.name='Repère élève';root.add(label);
+  ready=true;setReady(true);command('roam');
   if(D.camera.position.distanceToSquared(initialView.position)<.001&&Math.abs(D.camera.quaternion.dot(initialView.quaternion))>.9999)D.facePoint(X(actor.x),actor.h+1.05,Z(actor.y));
  },undefined,error=>{failed=true;console.error('Chargement du personnage GLB',error);say('Échec du chargement. Recharge la page pour réessayer.');});
  function tick(dt){
