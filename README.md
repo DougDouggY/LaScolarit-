@@ -51,3 +51,25 @@ python3 -m http.server 8000 --directory dist
 
 Node.js 24 et Python 3 suffisent ; aucune compilation ni installation npm n'est
 nécessaire. Respecter les contraintes de plan décrites dans `COLLEGE-VALIDATED.md`.
+
+## Élève GLB de test
+
+Dans la visite libre, appuyer sur **H** ou sur **Élève · H** pour ouvrir le menu.
+Actions : marcher jusqu’en français, courir au portail, se promener dans la cour,
+suivre le joueur au rez-de-chaussée, s’arrêter et revenir au départ. Le menu
+permet aussi de voir le modèle de près, de suspendre le test et de régler sa vitesse.
+Les déplacements utilisent les obstacles du collège et ouvrent les portes.
+
+Le deuxième modèle fourni remplace le premier dans `dist/assets/characters/eleve.glb`.
+Il contient un squelette et huit animations : `walk`, `run`, `dance_01`, `laugh_01`,
+`flip`, `run_upstairs`, `press-up` et `sit`. Marche et course sont synchronisées
+avec les trajets ; les autres clips se testent sur place depuis le menu.
+Les translations horizontales du bassin sont neutralisées pour laisser la navigation
+gérer les collisions. La montée de marches reste une démonstration au sol ;
+le test de déplacement actuel reste au rez-de-chaussée.
+Le chargeur GLTF local provient de Three.js r159, compatible avec le moteur du jeu ;
+sa licence MIT est dans `dist/vendor/three-LICENSE.txt`. Aucun CDN n’est nécessaire.
+
+Contrôle navigateur facultatif, avec Playwright et Chromium disponibles et le serveur
+local lancé : `node checks/pupil-browser-check.cjs`. Il vérifie le chargement du GLB,
+sa taille, les trajets, les animations natives, le suivi, l’arrêt, la pause et le menu H.

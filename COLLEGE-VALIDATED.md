@@ -19,3 +19,9 @@ Exterior update: double glazing in all 14 exterior windows; continuous terrazzo 
 Material assets were generated with the built-in imagegen tool. Exact prompts and generation metadata are in `dist/textures/manifest.json`. Texture grain/roughness settings are in `dist/campus-3d.js`. Image assets are project textures, not an image substitute for the playable 3D scene.
 
 Classroom decoration update: boards stand .92m from the front wall/window on braked caster wheels, permanently static. Sixteen individual desks/chairs per teaching room face the window/board; the teacher faces students, with a central walking aisle and rear access to the door. Technology/history have no exterior windows and use the wall opposite their entrance. Floors: identical whitewashed plank flooring in halls/circulation/entrance vestibules; actual oak planks in teaching rooms; tile in toilets/refectory; varied coloured carpet in staff room, school-life/CPE offices, secretariat, director, CDI and permanence; black 45cm tiles in the infirmary. Courtyard paint marks year ranks 6ème/5ème/4ème/3ème and a separate refectory queue along its courtyard-facing wall. Two benches sit near the north fence clear of ranks and gates.
+
+Pupil animation test: at the user's request, the free visit now includes one controllable
+GLB pupil, replacing the initial unrigged upload with the second rigged model. H opens
+its action menu. This is an exception to the earlier no-moving-NPC inspection rule;
+the clock, approved plan and existing daily simulation remain unchanged. Navigation
+tests stay on the ground floor; the upstairs animation is only demonstrated in place.
