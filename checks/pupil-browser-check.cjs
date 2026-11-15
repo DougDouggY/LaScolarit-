@@ -9,11 +9,25 @@ const {existsSync}=require('node:fs');
  page.setDefaultTimeout(120000);await page.goto((process.env.PUPIL_TEST_URL||'http://127.0.0.1:8000/campus-view.html'),{waitUntil:'domcontentloaded',timeout:120000});await page.waitForFunction(()=>window.campusPupil?.ready||window.campusPupil?.failed,{timeout:60000});
  assert(await page.evaluate(()=>campusPupil.ready&&!campusPupil.failed),'GLB loads successfully');
  await page.waitForFunction(()=>campusPupil.pupils.every(p=>p.ready||p.failed));
- assert(await page.evaluate(()=>campusPupil.pupils.length===2&&campusPupil.pupils.every(p=>p.ready&&!p.failed)),'Both independent GLB pupils load');
+ assert(await page.evaluate(()=>campusPupil.pupils.length===3&&campusPupil.pupils.every(p=>p.ready&&!p.failed)),'All three independent GLB pupils load');
  assert(await page.evaluate(()=>campusPupil.root.parent===campusDebug.scene),'Pupil is an independent scene actor');
- const start=await page.evaluate(()=>({x:campusPupil.actor.x,y:campusPupil.actor.y}));
- await page.waitForFunction(p=>Math.hypot(campusPupil.actor.x-p.x,campusPupil.actor.y-p.y)>2,start,{timeout:30000});
- console.log('PASS: pupil roams automatically before receiving any command');
+assert(await page.evaluate(()=>Math.abs(campusDebug.camera.position.y-campusDebug.position().feet-1.4)<.001),'First-person eyes are at child height');
+ console.log('AUTONOMY',await page.evaluate(()=>{
+ const C=campusPupil,states=C.pupils.map(()=>new Set()),destinations=C.pupils.map(()=>new Set());
+ for(let n=0;n<2000;n++){
+  C.tick(.04);
+  if(n%10===0)for(const [i,p]of C.pupils.entries()){
+   states[i].add(p.autonomy.stage+':'+p.autonomy.clip);
+   if(p.autonomy.stage==='travel'&&p.actor.target)destinations[i].add(p.actor.target.x+':'+p.actor.target.y);
+  }
+  const active=C.pupils.filter(p=>p.autonomy.stage==='travel').map(p=>p.actor.target.x+':'+p.actor.target.y);
+  if(new Set(active).size!==active.length)throw new Error('Autonomous pupils chose same destination');
+ }
+ if(new Set(C.pupils.map(p=>p.actor.speed)).size!==3)throw new Error('Walking rhythms must differ');
+ if(states.some(s=>s.size<2)||destinations.some(s=>s.size<2))throw new Error('Each pupil must alternate independent trips and breaks');
+ return states.map((s,i)=>({pupil:i+1,activities:[...s],destinations:destinations[i].size}));
+}));
+ console.log('PASS: autonomous trips and varied breaks verified over 80 simulated seconds');
  await page.locator('#look').click();await page.waitForFunction(()=>!!document.pointerLockElement,null,{timeout:10000});
  await page.keyboard.press('h');
  assert(await page.locator('#pupilPanel').isVisible(),'H opens the menu');
@@ -26,7 +40,7 @@ const {existsSync}=require('node:fs');
  C.command('home');step(900);check(!C.actor.path.length&&Math.hypot(C.actor.x-1100,C.actor.y-220)<12,'Return home');
  check(D.camera.position.distanceToSquared(playerPosition)<1e-8,'Remote orders never move the first-person player');
  C.focusActor();check(D.camera.position.distanceToSquared(playerPosition)<1e-8,'Look-at command never teleports the player');
- C.command('roam');const old=C.actor.x;step(120);check(Math.abs(old-C.actor.x)>5,'Free roaming moves');
+ C.command('roam');const old={x:C.actor.x,y:C.actor.y};step(120);check(Math.hypot(old.x-C.actor.x,old.y-C.actor.y)>5,'Free roaming moves');
  document.querySelector('[data-pupil="pause"]').click();const frozen={x:C.actor.x,y:C.actor.y,phase:C.actor.phase};step(80);check(C.actor.x===frozen.x&&C.actor.y===frozen.y&&C.actor.phase===frozen.phase,'Pause freezes movement and gait');
  C.command('stop');step(80);const x=C.actor.x,y=C.actor.y;step(80);check(C.actor.x===x&&C.actor.y===y,'Stop cancels route');
  D.teleport(1200,220,0);C.command('follow');step(500);check(Math.hypot((C.actor.x-1200)*P.scale,(C.actor.y-220)*P.scale)<2,'Follow player');
@@ -38,17 +52,23 @@ const {existsSync}=require('node:fs');
  const before=bones.map(b=>b.quaternion.toArray().join(','));step(10);check(bones.some((b,i)=>b.quaternion.toArray().join(',')!==before[i]),'Native skeleton animates');
  document.querySelector('[data-pupil="pause"]').click();const pausePose=bones.map(b=>b.quaternion.toArray().join(','));step(20);check(bones.every((b,i)=>b.quaternion.toArray().join(',')===pausePose[i]),'Pause freezes native skeleton');
  const first=C.pupils[0],firstPosition={x:first.actor.x,y:first.actor.y};
- check(C.selectPupil('eleve-2')&&C.actor===C.pupils[1].actor,'Select second pupil');
- C.command('fr');step(2200);check(!C.actor.path.length&&P.containsRoom(r,C.actor.x,C.actor.y),'Second pupil reaches French classroom');
- C.command('gate');step(1400);check(!C.actor.path.length&&Math.hypot(C.actor.x-1350,C.actor.y-225)<12,'Second pupil runs to gate');
- C.command('home');step(900);check(!C.actor.path.length&&Math.hypot(C.actor.x-1100,C.actor.y-190)<12,'Second pupil returns to its own home');
- check(first.paused&&first.actor.x===firstPosition.x&&first.actor.y===firstPosition.y,'Commands for second pupil preserve first pupil state');
- C.pupils[1].setSpeed(2);check(first.speedMultiplier===1&&C.pupils[1].speedMultiplier===2,'Each pupil has independent speed');
- for(const clip of ['dance_01','laugh_01','flip','run_upstairs','press-up','sit']){C.command('clip:'+clip);step(40);check(C.animation===clip,'Second pupil native clip: '+clip);}
+ for(const [index,homeY]of [[1,190],[2,250]]){
+ const id='eleve-'+(index+1),name='Pupil '+(index+1);
+ check(C.selectPupil(id)&&C.actor===C.pupils[index].actor,'Select '+name);
+ const remotePosition=D.camera.position.clone();
+ C.command('fr');step(2200);check(!C.actor.path.length&&P.containsRoom(r,C.actor.x,C.actor.y),name+' reaches French classroom');
+ C.command('gate');step(1400);check(!C.actor.path.length&&Math.hypot(C.actor.x-1350,C.actor.y-225)<12,name+' runs to gate');
+ C.command('home');step(900);check(!C.actor.path.length&&Math.hypot(C.actor.x-1100,C.actor.y-homeY)<12,name+' returns to its own home');
+ check(first.paused&&first.actor.x===firstPosition.x&&first.actor.y===firstPosition.y,'Commands for '+name+' preserve first pupil state');
+ check(D.camera.position.distanceToSquared(remotePosition)<1e-8,name+' commands leave child camera in place');
+ C.pupils[index].setSpeed(2);check(first.speedMultiplier===1&&C.pupils[index].speedMultiplier===2,name+' has independent speed');
+ check(Math.abs(new THREE.Box3().setFromObject(C.root.children[0]).getSize(new THREE.Vector3()).y-1.62)<.02,name+' has child scale');
+ for(const clip of ['dance_01','laugh_01','flip','run_upstairs','press-up','sit']){C.command('clip:'+clip);step(40);check(C.animation===clip,name+' native clip: '+clip);}
+ }
  C.selectPupil('eleve-1');check(document.querySelector('#pupilSpeed').value==='1'&&document.querySelector('[data-pupil="pause"]').getAttribute('aria-pressed')==='true','Menu restores selected pupil speed and pause');
  return results;
 }));
- await page.selectOption('#pupilSelect','eleve-2');assert(await page.evaluate(()=>campusPupil.actor===campusPupil.pupils[1].actor),'Dropdown selects second pupil');
+ await page.selectOption('#pupilSelect','eleve-3');assert(await page.evaluate(()=>campusPupil.actor===campusPupil.pupils[2].actor),'Dropdown selects third pupil');
  await page.keyboard.press('h');assert(!(await page.locator('#pupilPanel').isVisible()),'H closes the menu');
  await page.keyboard.press('h');assert(await page.locator('#pupilPanel').isVisible(),'H reopens the menu');
  assert.deepEqual(errors,[],'No uncaught browser errors');

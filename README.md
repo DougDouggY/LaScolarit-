@@ -79,3 +79,12 @@ sa taille, les trajets, les animations natives, le suivi, l’arrêt, la pause e
 Un deuxième élève articulé est conservé dans `dist/assets/characters/eleve-2.glb`.
 Les deux élèves se promènent dans la cour. Dans H, le sélecteur « Élève à commander »
 choisit la cible des ordres ; les trajets, animations, vitesses et pauses sont indépendants.
+
+Le troisième élève utilise `dist/assets/characters/eleve-3.glb`.
+Chaque élève a sa propre allure, un décalage de pas, un générateur aléatoire indépendant
+et des durées de pause différentes. En mode libre, ils alternent promenade, observation,
+rire ou quelques pas de danse selon leur profil. Les destinations et gestes autonomes
+sont réservés pour éviter les choix simultanés identiques. Ils ne se suivent pas automatiquement.
+Les ordres explicites du menu H restent prioritaires pour l’élève sélectionné.
+
+La caméra en première personne est à 1,40 m au-dessus du sol, à hauteur d’yeux d’enfant, y compris dans les escaliers.
