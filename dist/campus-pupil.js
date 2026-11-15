@@ -1,28 +1,29 @@
 'use strict';
 // Rigged pupil: native GLB clips, with navigation controlling horizontal root motion.
 window.startCampusPupil=function(D){
- const T=THREE,P=D.plan,X=x=>(x-715)*P.scale,Z=y=>(y-360)*P.scale;
- const nav=makeCampusNavigator(D),home={x:1100,y:220,level:0};
- const actor={x:home.x,y:home.y,h:0,path:[],heading:0,phase:0,blend:0,speed:1.25};
- let model=null,mixer=null,currentAction=null,currentClip='',actions={},naturalSpeeds={},mode='stop',paused=false,followTimer=0,roamWait=0,ready=false,failed=false,lastFocus=null;
- const initialView={position:D.camera.position.clone(),quaternion:D.camera.quaternion.clone()};
- const root=new T.Group();root.name='Élève GLB · test';D.scene.add(root);
- const panel=document.querySelector('#pupilPanel'),status=document.querySelector('#pupilStatus'),badge=document.querySelector('#pupilBadge');
- const buttons=[...panel.querySelectorAll('[data-pupil]')];
- function say(text){if(status.textContent!==text)status.textContent=text;if(badge.textContent!==text)badge.textContent=text;}
+ const panel=document.querySelector('#pupilPanel'),status=document.querySelector('#pupilStatus'),badge=document.querySelector('#pupilBadge'),selector=document.querySelector('#pupilSelect');
+ const buttons=[...panel.querySelectorAll('[data-pupil]')],pupils=[],navigation=makeCampusNavigator(D);
+ let selectedIndex=0,lastFocus=null;
+ function selected(){return pupils[selectedIndex];}
+ function refresh(){
+  const c=selected();if(!c)return;
+  buttons.forEach(b=>{b.disabled=!c.ready||(b.dataset.pupil.startsWith('clip:')&&!c.animations.includes(b.dataset.pupil.slice(5)));});
+  status.textContent=c.name+' · '+c.message;badge.textContent=c.name+' · '+c.message;
+  document.querySelector('#pupilSpeed').disabled=!c.ready;
+  document.querySelector('#pupilSpeed').value=c.speedMultiplier;
+  document.querySelector('#pupilSpeedValue').textContent=c.speedMultiplier+'×';
+  document.querySelector('[data-pupil="pause"]').setAttribute('aria-pressed',String(c.paused));
+ }
  function open(value){panel.hidden=!value;document.querySelector('#pupilButton').setAttribute('aria-expanded',String(value));if(value){document.exitPointerLock?.();lastFocus=document.activeElement;document.querySelector('#pupilClose').focus();}else lastFocus?.focus?.();}
- document.querySelector('#pupilButton').onclick=()=>open(panel.hidden);
- document.querySelector('#pupilClose').onclick=()=>open(false);
- document.addEventListener('keydown',e=>{
-  if(e.key.toLowerCase()==='h'&&!e.repeat&&!/INPUT|TEXTAREA|SELECT/.test(e.target.tagName)){e.preventDefault();e.stopImmediatePropagation();open(panel.hidden);}
-  else if(!panel.hidden&&e.key==='Escape'){e.preventDefault();e.stopImmediatePropagation();open(false);}
-  else if(!panel.hidden&&e.key==='Tab'){
-   const focus=[...panel.querySelectorAll('button,input')].filter(b=>!b.disabled),i=focus.indexOf(document.activeElement);
-   if(e.shiftKey&&i<=0){e.preventDefault();focus.at(-1).focus();}else if(!e.shiftKey&&i===focus.length-1){e.preventDefault();focus[0].focus();}
-  }
- },true);
- function setReady(value){buttons.forEach(b=>b.disabled=!value);document.querySelector('#pupilSpeed').disabled=!value;}
- setReady(false);say('Chargement de l’élève…');
+ function selectPupil(id){const i=pupils.findIndex(c=>c.id===id);if(i<0)return false;selectedIndex=i;selector.value=id;refresh();return true;}
+ function createPupil(config){
+ const T=THREE,P=D.plan,X=x=>(x-715)*P.scale,Z=y=>(y-360)*P.scale;
+ const nav=navigation,home=config.home;
+ const actor={x:home.x,y:home.y,h:0,path:[],heading:0,phase:0,blend:0,speed:1.25};
+ let model=null,mixer=null,currentAction=null,currentClip='',actions={},naturalSpeeds={},mode='stop',paused=false,followTimer=0,roamWait=0,ready=false,failed=false,speedMultiplier=1,message='Chargement…';
+ const initialView={position:D.camera.position.clone(),quaternion:D.camera.quaternion.clone()};
+ const root=new T.Group();root.name=config.name+' · GLB';D.scene.add(root);
+ function say(text){if(message!==text){message=text;if(selected()?.id===config.id)refresh();}}
  function roomTarget(id){const r=P.floors[0].rooms.find(r=>r.id===id),door=P.doorOf(r);
   // Stay on the central aisle just inside the room, clear of desks.
   return {x:door.axis==='z'?r.x+r.w-36:(door.a+door.b)/2,y:door.axis==='z'?(door.a+door.b)/2:r.y+36,level:0};
@@ -35,7 +36,7 @@ window.startCampusPupil=function(D){
  }
  const roamPoints=[{x:1100,y:200,level:0},{x:1250,y:280,level:0},{x:750,y:220,level:0},{x:950,y:330,level:0},{x:600,y:150,level:0}];
  function command(action){
-  if(!ready)return false;paused=false;document.querySelector('[data-pupil="pause"]').setAttribute('aria-pressed','false');
+  if(!ready)return false;paused=false;
   mode=action;actor.path=[];actor.speed=action==='gate'?3:1.25;
   if(action.startsWith('clip:')){const name=action.slice(5);mode=action;play(name);say('Animation sur place · '+clipLabels[name]);return true;}
   if(action==='fr')return route(roomTarget('fr'),'Marche vers la salle de français');
@@ -49,14 +50,6 @@ window.startCampusPupil=function(D){
   // Remote control never moves or replaces the first-person player.
   D.facePoint(X(actor.x),actor.h+1.1,Z(actor.y));return true;
  }
- buttons.forEach(b=>b.onclick=()=>{
-  const action=b.dataset.pupil;
-  if(action==='focus'){focusActor();open(false);return;}
-  if(action==='pause'){paused=!paused;b.setAttribute('aria-pressed',String(paused));say(paused?'Animation et déplacement en pause':'Reprise du test');return;}
-  if(action==='reset'){Object.assign(actor,{...home,h:0,path:[],phase:0,blend:0,heading:0});command('roam');return;}
-  command(action);
- });
- document.querySelector('#pupilSpeed').oninput=e=>{document.querySelector('#pupilSpeedValue').textContent=e.target.value+'×';};
  const clipLabels={dance_01:'Danser',laugh_01:'Rire',flip:'Salto',run_upstairs:'Monter des marches',"press-up":'Faire des pompes',sit:'S’asseoir',walk:'Marcher',run:'Courir'};
  function play(name){
   if(!actions[name]||name===currentClip)return;
@@ -64,7 +57,7 @@ window.startCampusPupil=function(D){
   if(currentAction){currentAction.fadeOut(.2);next.fadeIn(.2);}
   currentAction=next;currentClip=name;
  }
- new T.GLTFLoader().load('assets/characters/eleve.glb?v=2',gltf=>{
+ new T.GLTFLoader().load(config.url,gltf=>{
   model=gltf.scene;
   // Skinned bounds require initialized bone world matrices; otherwise the
   // first pre-render box can be much smaller than the actual character.
@@ -100,10 +93,10 @@ window.startCampusPupil=function(D){
   }
   root.add(model);play('idle');mixer.update(0);
   const canvas=document.createElement('canvas');canvas.width=512;canvas.height=96;
-  const ctx=canvas.getContext('2d');ctx.fillStyle='#152329';ctx.fillRect(0,0,512,96);ctx.fillStyle='#f1e7ca';ctx.font='bold 32px system-ui';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('ÉLÈVE · CONTRÔLE H',256,48);
-  const label=new T.Sprite(new T.SpriteMaterial({map:new T.CanvasTexture(canvas),depthWrite:false}));label.position.y=1.94;label.scale.set(1.9,.36,1);label.name='Repère élève';root.add(label);
-  ready=true;setReady(true);command('roam');
-  if(D.camera.position.distanceToSquared(initialView.position)<.001&&Math.abs(D.camera.quaternion.dot(initialView.quaternion))>.9999)D.facePoint(X(actor.x),actor.h+1.05,Z(actor.y));
+  const ctx=canvas.getContext('2d');ctx.fillStyle='#152329';ctx.fillRect(0,0,512,96);ctx.fillStyle='#f1e7ca';ctx.font='bold 32px system-ui';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(config.name.toUpperCase()+' · H',256,48);
+  const label=new T.Sprite(new T.SpriteMaterial({map:new T.CanvasTexture(canvas),depthWrite:false}));label.position.y=1.94;label.scale.set(1.05,.20,1);label.name='Repère élève';root.add(label);
+  ready=true;command('roam');
+  if(config.frameInitially&&D.camera.position.distanceToSquared(initialView.position)<.001&&Math.abs(D.camera.quaternion.dot(initialView.quaternion))>.9999)D.facePoint(X(actor.x),actor.h+1.05,Z(actor.y));
  },undefined,error=>{failed=true;console.error('Chargement du personnage GLB',error);say('Échec du chargement. Recharge la page pour réessayer.');});
  function tick(dt){
   if(!ready)return;dt=Math.min(dt,.04);let traveled=0;
@@ -117,7 +110,7 @@ window.startCampusPupil=function(D){
    if(mode==='roam'&&!actor.path.length){roamWait-=dt;if(roamWait<=0){const choices=roamPoints.filter(p=>Math.hypot(p.x-actor.x,p.y-actor.y)>60);route(choices[Math.floor(Math.random()*choices.length)],'Déplacement libre dans la cour');roamWait=1.4;}}
    const target=actor.path[0];
    if(target){
-    const dx=X(target.x)-X(actor.x),dz=Z(target.y)-Z(actor.y),len=Math.hypot(dx,dz),step=Math.min(len,dt*actor.speed*Number(document.querySelector('#pupilSpeed').value));
+    const dx=X(target.x)-X(actor.x),dz=Z(target.y)-Z(actor.y),len=Math.hypot(dx,dz),step=Math.min(len,dt*actor.speed*speedMultiplier);
     if(len<.025){actor.path.shift();if(!actor.path.length&&!['roam','follow'].includes(mode)){say('Arrivé · '+(mode==='fr'?'salle de français':mode==='gate'?'portail':'point de départ'));mode='stop';}}
     else{
      const nx=X(actor.x)+dx/len*step,nz=Z(actor.y)+dz/len*step;
@@ -132,11 +125,47 @@ window.startCampusPupil=function(D){
    root.rotation.y+=Math.atan2(Math.sin(actor.heading-root.rotation.y),Math.cos(actor.heading-root.rotation.y))*(1-Math.exp(-dt*9));
    const demo=mode.startsWith('clip:')?mode.slice(5):null;
    const clip=demo||(traveled>0?(actor.speed>2?'run':'walk'):'idle');play(clip);
-   const rate=Number(document.querySelector('#pupilSpeed').value);
+   const rate=speedMultiplier;
    if(currentAction)currentAction.setEffectiveTimeScale(demo?rate:clip==='idle'?1:actor.speed*rate/Math.max(.1,naturalSpeeds[clip]||actor.speed));
    mixer.update(dt);
   }
   root.position.set(X(actor.x),actor.h,Z(actor.y));
  }
- return{tick,command,focusActor,actor,root,roomTarget,get animation(){return currentClip},get animations(){return Object.keys(actions)},get ready(){return ready},get failed(){return failed},get menuOpen(){return !panel.hidden},get paused(){return paused}};
+ return{id:config.id,name:config.name,tick,command,focusActor,actor,root,roomTarget,
+  handle(action){
+   if(!ready)return false;
+   if(action==='focus'){focusActor();open(false);return true;}
+   if(action==='pause'){paused=!paused;say(paused?'Animation et déplacement en pause':'Reprise du test');refresh();return true;}
+   if(action==='reset'){Object.assign(actor,{...home,h:0,path:[],phase:0,blend:0,heading:0});return command('roam');}
+   return command(action);
+  },
+  setSpeed(value){speedMultiplier=Math.max(.25,Math.min(2,Number(value)||1));refresh();},
+  get speedMultiplier(){return speedMultiplier},get message(){return message},
+  get animation(){return currentClip},get animations(){return Object.keys(actions)},get ready(){return ready},get failed(){return failed},get paused(){return paused}};
+ }
+ for(const config of [
+  {id:'eleve-1',name:'Élève 1',url:'assets/characters/eleve.glb?v=2',home:{x:1100,y:220,level:0},frameInitially:true},
+  {id:'eleve-2',name:'Élève 2',url:'assets/characters/eleve-2.glb',home:{x:1100,y:190,level:0}}
+ ]){
+  const option=document.createElement('option');option.value=config.id;option.textContent=config.name;selector.appendChild(option);
+  pupils.push(createPupil(config));
+ }
+ selector.onchange=()=>selectPupil(selector.value);
+ document.querySelector('#pupilButton').onclick=()=>open(panel.hidden);
+ document.querySelector('#pupilClose').onclick=()=>open(false);
+ buttons.forEach(b=>b.onclick=()=>selected().handle(b.dataset.pupil));
+ document.querySelector('#pupilSpeed').oninput=e=>selected().setSpeed(e.target.value);
+ document.addEventListener('keydown',e=>{
+  if(e.key.toLowerCase()==='h'&&!e.repeat&&!/INPUT|TEXTAREA/.test(e.target.tagName)){e.preventDefault();e.stopImmediatePropagation();open(panel.hidden);}
+  else if(!panel.hidden&&e.key==='Escape'){e.preventDefault();e.stopImmediatePropagation();open(false);}
+  else if(!panel.hidden&&e.key==='Tab'){
+   const focus=[...panel.querySelectorAll('button,input,select')].filter(b=>!b.disabled),i=focus.indexOf(document.activeElement);
+   if(e.shiftKey&&i<=0){e.preventDefault();focus.at(-1).focus();}else if(!e.shiftKey&&i===focus.length-1){e.preventDefault();focus[0].focus();}
+  }
+ },true);
+ refresh();
+ return{pupils,selectPupil,tick(dt){for(const pupil of pupils)pupil.tick(dt)},
+  command(action){return selected().command(action)},focusActor(){return selected().focusActor()},roomTarget(id){return selected().roomTarget(id)},
+  get actor(){return selected().actor},get root(){return selected().root},get animation(){return selected().animation},get animations(){return selected().animations},
+  get ready(){return selected().ready},get failed(){return selected().failed},get menuOpen(){return !panel.hidden},get paused(){return selected().paused}};
 };

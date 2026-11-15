@@ -75,3 +75,7 @@ sa licence MIT est dans `dist/vendor/three-LICENSE.txt`. Aucun CDN n’est néce
 Contrôle navigateur facultatif, avec Playwright et Chromium disponibles et le serveur
 local lancé : `node checks/pupil-browser-check.cjs`. Il vérifie le chargement du GLB,
 sa taille, les trajets, les animations natives, le suivi, l’arrêt, la pause et le menu H.
+
+Un deuxième élève articulé est conservé dans `dist/assets/characters/eleve-2.glb`.
+Les deux élèves se promènent dans la cour. Dans H, le sélecteur « Élève à commander »
+choisit la cible des ordres ; les trajets, animations, vitesses et pauses sont indépendants.
